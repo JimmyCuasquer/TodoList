@@ -9,6 +9,8 @@ const App = () => {
   const [todoList, setTodoList] = useState([]);
   const [copiaTodo, setCopiaTodo] = useState([]);
   // state string  completed e inicializar el null  true o false  !! todo completas e incompletas  si es completas 
+  const [estadoBoton, setEstadoBoton] = useState("");
+
   //EFFECT
   useEffect(() => {
     const handleTodoList = async () => {
@@ -37,27 +39,36 @@ const App = () => {
     );
   };
   const HandleCompleteTodo = () =>{
+    setEstadoBoton("todas")
     setCopiaTodo(todoList)
   }
   const HandleIncomplete = () => {
+    setEstadoBoton("incompletas")
     setCopiaTodo(
       todoList.filter(valor => valor.completed === false ? valor: null
     ))
   }
   const HandleComplete = () =>{
+    setEstadoBoton("completas")
    setCopiaTodo( 
     todoList.filter(valor => valor.completed === true ? valor: null
    )) 
   }
 
   useEffect(() =>{
-    //if(){
-      HandleCompleteTodo()
-      HandleComplete()
-      HandleIncomplete()
-    
-    
-    
+    switch (estadoBoton) {
+      case "todas":
+        HandleCompleteTodo()   
+        break;
+        case "completas":
+        HandleComplete()   
+        break;
+        case "incompletas":
+         HandleIncomplete()   
+        break;
+      default:
+        break;
+    }
   },[todoList])
   
 
