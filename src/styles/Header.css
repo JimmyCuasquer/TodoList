@@ -1,0 +1,12 @@
+.Container{
+    height: 30%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+
+}
+.btn-btn-info {
+    padding: 10px;
+    margin: 7px;
+;
+}
